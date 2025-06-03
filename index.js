@@ -33,3 +33,14 @@ const res2 = obj2.reduce((acc, curr) => { // вызываем метод reduce 
   return Object.keys(curr).length > Object.keys(acc).length ? curr : acc // возвращаем длину количества ключей объекта у curr указываем что будем сравнивать с длинной объекта ключей накопителя acc если выражение истина то ? если ложь то :
 }, obj2[0]) // инциализируем объект с ключами начиная с 0 по умолчанию
 console.log(res2)
+
+// 3. Удалить повторяющиеся объекты (глубокое сравнение)
+// const objs3 = [{x: 1}, {x: 2}, {x: 1}];
+// const result3 = [{x: 1}, {x: 2}];
+
+// TO DOO
+const objs3 = [{x: 1}, {x: 2}, {x: 1}]
+const res3 = objs3.filter((obj, index, self) => { // фильтрую элементы на неповторение и записываю их в новый массив который создаётся методом filter
+  return index === self.findIndex(el => (el.id === obj.id && el.x === obj.x)) // возвращаем только уникальные значения
+})
+console.log(res3)
