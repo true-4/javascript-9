@@ -44,3 +44,13 @@ const res3 = objs3.filter((obj, index, self) => { // фильтрую элеме
   return index === self.findIndex(el => (el.id === obj.id && el.x === obj.x)) // возвращаем только уникальные значения
 })
 console.log(res3)
+
+// 4. Получить все уникальные символы из массива строк
+// const strs4 = ['cat', 'dog', 'cow'];
+// const result4 = ['c', 'a', 't', 'd', 'o', 'g', 'w'];
+
+// TO DOO
+const strs4 = ['cat', 'dog', 'cow']
+const newStr = strs4.toString().split('')
+const set = [...new Set(newStr)]
+console.log(set)
