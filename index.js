@@ -11,7 +11,11 @@ const arrThis = () => console.log(this)
 arrThis() // не имеет собственного this ссылается на LE родителя вернёт undefined
 
 // 3
-// 3.1 TO DOO
+// 1. Найти элемент с максимальной суммой цифр
+// const nums1 = [12, 23, 45, 111];
+// const result1 = 45; // 4+5=9 – максимальная сумма
+
+// TO DOO
 const nums1 = [12, 23, 42, 45, 111]
 const res1 = nums1.map(num => ({
   number: num,
@@ -20,9 +24,12 @@ const res1 = nums1.map(num => ({
 
 console.log(res1)
 
-// 3.2
+// 2. Найти объект с наибольшим количеством свойств
+// const objs2 = [{a: 1}, {a: 1, b: 2}, {a: 1, b: 2, c: 3}];
+// const result2 = {a: 1, b: 2, c: 3};
+
 const obj2 = [{a: 1}, {a: 1, b: 2}, {a: 1, b: 2, c: 3}]
-const res2 = obj2.map((it) => {
-  return it
-})
+const res2 = obj2.reduce((acc, curr) => { // вызываем метод reduce и указал его api 
+  return Object.keys(curr).length > Object.keys(acc).length ? curr : acc // возвращаем длину количества ключей объекта у curr указываем что будем сравнивать с длинной объекта ключей накопителя acc если выражение истина то ? если ложь то :
+}, obj2[0]) // инциализируем объект с ключами начиная с 0 по умолчанию
 console.log(res2)
