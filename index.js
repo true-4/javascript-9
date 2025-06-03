@@ -54,3 +54,16 @@ const strs4 = ['cat', 'dog', 'cow']
 const newStr = strs4.toString().split('')
 const set = [...new Set(newStr)]
 console.log(set)
+
+// 5. Преобразовать массив пар в объект
+// const pairs5 = [['a', 1], ['b', 2]];
+// const result5 = {a: 1, b: 2};
+
+// TO DOO
+const pairs5 = [['a', 1], ['b', 2]]
+const res5 = pairs5.flat().reduce((acc, curr) => {
+  acc[curr] = (acc[curr] || curr)
+  return acc
+}, {})
+
+console.log(res5)
