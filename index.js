@@ -67,3 +67,14 @@ const res5 = pairs5.flat().reduce((acc, curr) => {
 }, {})
 
 console.log(res5)
+
+// 6. Из массива чисел получить сумму только уникальных чисел
+// const nums6 = [1, 2, 2, 3, 4, 4];
+// const result6 = 1 + 3 = 4;
+
+const nums6 = [1, 2, 2, 3, 4, 4]
+const newNums = [...new Set(nums6)]
+const res6 = newNums.reduce((acc, curr) => { return acc + curr}, 0)
+
+console.log(res6)
+console.log(newNums)
