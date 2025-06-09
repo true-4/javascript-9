@@ -128,3 +128,15 @@ for (let i = 0; i < arr10.length; i++) {
 }
 
 console.log(res10)
+
+// 11. Развернуть (инвертировать) объект: ключи становятся значениями
+const obj11 = {a: 1, b: 2};
+// const result11 = {1: 'a', 2: 'b'};
+
+const res11 = Object.entries(obj11).reduce((acc, [key, value]) => {
+  acc[value] = key
+  return acc
+}, {})
+
+console.log(obj11)
+console.log(res11)
