@@ -61,8 +61,8 @@ console.log(set)
 
 // TO DOO
 const pairs5 = [['a', 1], ['b', 2]]
-const res5 = pairs5.flat().reduce((acc, curr) => {
-  acc[curr] = (acc[curr] || curr)
+const res5 = pairs5.reduce((acc, [key, value]) => {
+  acc[key] = value
   return acc
 }, {})
 
@@ -73,8 +73,30 @@ console.log(res5)
 // const result6 = 1 + 3 = 4;
 
 const nums6 = [1, 2, 2, 3, 4, 4]
-const newNums = [...new Set(nums6)]
-const res6 = newNums.reduce((acc, curr) => { return acc + curr}, 0)
+const count6 = {}
 
+for (const el of nums6) {
+  count6[el] = (count6[el] || 0) + 1
+}
+
+const res6 = Object.keys(count6).filter(key => count6[key] === 1).reduce((acc, curr) => {return acc + +curr}, 0)
 console.log(res6)
-console.log(newNums)
+
+// 7. Перевести массив строк в массив объектов {original, length}
+// const words7 = ['hi', 'hello'];
+// const result7 = [{original: 'hi', length: 2}, {original: 'hello', length: 5}];
+
+const words7 = ['hi', 'hello']
+const res7 = words7.map(str => ({original: str, length: str.length}))
+
+console.log(res7)
+
+// 8. Найти пересечение двух массивов объектов по ключу id
+const arrA8 = [{id: 1}, {id: 2}];
+const arrB8 = [{id: 2}, {id: 3}];
+// const result8 = [{id: 2}];
+
+const comparison = new Set(arrB8.map(arg => arg.id))
+const res8 = arrA8.filter(arg => comparison.has(arg.id))
+
+console.log(res8)
