@@ -149,3 +149,27 @@ const positive = nums12.filter(num => num > 0)
 const negative = nums12.filter(num => num < 0)
 
 console.log({positive, negative})
+
+// 13. Сгруппировать пользователей по возрасту
+const users13 = [{age: 20}, {age: 30}, {age: 20}];
+// const result13 = {20: [{age: 20}, {age: 20}], 30: [{age: 30}]};
+
+const res13 = users13.reduce((acc, {age}) => {
+  if (!acc[age]) {
+    acc[age] = []
+  }
+  acc[age].push({age})
+  return acc
+}, {})
+
+console.log(res13)
+
+// 14. Найти самую часто встречающуюся строку
+const strs14 = ['a', 'b', 'a', 'c', 'b', 'a'];
+// const result14 = 'a';
+
+const res14 = strs14.reduce((acc, curr) => {
+  return acc
+})
+
+console.log(res14)
