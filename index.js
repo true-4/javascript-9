@@ -167,9 +167,10 @@ console.log(res13)
 // 14. Найти самую часто встречающуюся строку
 const strs14 = ['a', 'b', 'a', 'c', 'b', 'a'];
 // const result14 = 'a';
-
+// TO DOO
 const res14 = strs14.reduce((acc, curr) => {
+  acc[curr] = (acc[curr] || 0) + 1
   return acc
-})
+}, {})
 
 console.log(res14)
