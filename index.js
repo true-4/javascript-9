@@ -140,3 +140,12 @@ const res11 = Object.entries(obj11).reduce((acc, [key, value]) => {
 
 console.log(obj11)
 console.log(res11)
+
+// 12. Разделить массив на положительные и отрицательные
+const nums12 = [-1, 2, -3, 4];
+// const result12 = {positive: [2, 4], negative: [-1, -3]};
+
+const positive = nums12.filter(num => num > 0)
+const negative = nums12.filter(num => num < 0)
+
+console.log({positive, negative})
