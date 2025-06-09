@@ -100,3 +100,31 @@ const comparison = new Set(arrB8.map(arg => arg.id))
 const res8 = arrA8.filter(arg => comparison.has(arg.id))
 
 console.log(res8)
+
+// 9. Преобразовать массив объектов в объект с ключами id
+const users9 = [{id: 1, name: 'Ann'}, {id: 2, name: 'Bob'}];
+// const result9 = {1: {id: 1, name: 'Ann'}, 2: {id: 2, name: 'Bob'}};
+const res9 = users9.reduce((acc, curr) => {
+  return acc[curr] = curr
+}, {})
+
+console.log(res9)
+
+// 10. Получить сумму значений по одинаковым ключам
+const arr10 = [{a: 1, b: 2}, {a: 3, b: 4}]
+// const result10 = {a: 4, b: 6};
+
+const res10 = {}
+
+for (let i = 0; i < arr10.length; i++) {
+  const arrKeys = Object.keys(arr10[i])
+  for (const el of arrKeys) {
+    if (res10[el] === undefined) {
+      res10[el] = arr10[i][el]
+    } else {
+      res10[el] = res10[el] + arr10[i][el]
+    }
+  }
+}
+
+console.log(res10)
