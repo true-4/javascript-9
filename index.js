@@ -330,3 +330,167 @@ const nums30 = [1, 2, 3];
 
 const res30 = nums30.map(num => `${num}-й`)
 console.log(res30)
+
+// ПОВТОРЕНИЕ
+
+// 20. Объединить массив объектов в один
+const arr200 = [{a: 1}, {b: 2}, {c: 3}];
+// const res200 = Object.assign({}, ...arr20); // {a: 1, b: 2, c: 3}
+
+const res200 = Object.assign({}, ...arr200)
+console.log(res200)
+
+// 1. Получить все ключи объекта в виде массива
+const obj1 = { name: "Alice", age: 30, city: "Paris" };
+// Ожидаемый результат: ["name", "age", "city"]
+
+const result1 = Object.keys(obj1)
+console.log(result1)
+
+// 2. Получить все значения объекта в виде массива
+const obj22 = { name: "Bob", age: 25, country: "Canada" };
+// Ожидаемый результат: ["Bob", 25, "Canada"]
+
+const result2 = Object.values(obj22)
+console.log(result2)
+
+// 3. Преобразовать объект в массив пар [ключ, значение]
+const obj3 = { a: 1, b: 2, c: 3 };
+// Ожидаемый результат: [["a", 1], ["b", 2], ["c", 3]]
+
+const result3 = Object.entries(obj3)
+console.log(result3)
+
+// 4. Найти сумму всех числовых значений объекта
+const obj4 = { math: 90, physics: 80, english: 70 };
+// Ожидаемый результат: 240
+
+const result4 = Object.values(obj4).reduce((acc, curr) => acc + curr)
+console.log(result4)
+
+// 5. Отфильтровать пары, у которых значения больше 10
+const obj5 = { a: 5, b: 15, c: 8, d: 22 };
+// Ожидаемый результат: { b: 15, d: 22 }
+
+const filteredEntries = Object.entries(obj5).filter(([key, value]) => value > 10)
+const result5 = Object.fromEntries(filteredEntries)
+console.log(result5)
+
+// 6. Из массива [ключ, значение] собрать обратно объект
+const entries6 = [["x", 10], ["y", 20]];
+// Ожидаемый результат: { x: 10, y: 20 }
+
+const result6 = Object.fromEntries(entries6)
+console.log(result6)
+
+// 7. Подсчитать, сколько раз встречается каждое значение
+const obj7 = { a: "yes", b: "no", c: "yes", d: "maybe" };
+// Ожидаемый результат: { yes: 2, no: 1, maybe: 1 }
+
+const result7 = {};
+for (const key in obj7) {
+  const value = obj7[key]
+  result7[value] = (result7[value] || 0) + 1
+}
+console.log(result7)
+
+// 8. Сделать инвертированный объект: значения → ключи
+const obj8 = { a: 1, b: 2, c: 1 };
+// Ожидаемый результат: { 1: "c", 2: "b" }
+
+const result8 = Object.entries(obj8).reduce((acc, [key, value]) => {
+  acc[value] = key
+  return acc
+}, {})
+console.log(result8)
+
+// 9. Удалить все свойства, где значение null или undefined
+const obj9 = { name: "Tom", age: null, city: "Rome", job: undefined };
+// Ожидаемый результат: { name: "Tom", city: "Rome" }
+
+const result9 = Object.fromEntries(Object.entries(obj9).filter(([key,value]) => value !== null))
+console.log(result9)
+
+// 10. Создать массив строк "ключ: значение"
+const obj10 = { brand: "Tesla", model: "S", year: 2021 };
+// Ожидаемый результат: ["brand: Tesla", "model: S", "year: 2021"]
+
+const result10 = Object.entries(obj10).map(([key,value]) => `${key}: ${value}`)
+console.log(result10)
+
+// 11. Получить количество ключей в объекте
+const obj111 = { a: 1, b: 2, c: 3, d: 4 };
+// Ожидаемый результат: 4
+
+const result11 = Object.entries(obj111).length
+console.log(result11)
+
+// 12. Удвоить все числовые значения
+const obj12 = { a: 2, b: 4, c: 6 };
+// Ожидаемый результат: { a: 4, b: 8, c: 12 }
+
+const result12 = Object.fromEntries(Object.entries(obj12).map(([key, value]) => [key, typeof value === 'number' ? value * 2 : value]))
+console.log(result12)
+
+// 13. Получить объект только с строковыми значениями
+const obj13 = { name: "John", age: 28, city: "Berlin", height: 180 };
+// Ожидаемый результат: { name: "John", city: "Berlin" }
+
+const result13 = Object.fromEntries(Object.entries(obj13).filter(([k, v]) => typeof v === 'string'))
+console.log(result13)
+
+// 14. Проверить, есть ли значение "admin"
+const obj14 = { role1: "user", role2: "moderator", role3: "admin" };
+// Ожидаемый результат: true
+
+const result14 = Object.values(obj14).includes("admin")
+console.log(result14)
+
+// 15. Получить сумму длин всех строковых значений
+const obj15 = { a: "hello", b: "world", c: 42 };
+// Ожидаемый результат: 10
+
+const result15 = Object.values(obj15).reduce((sum, v) => {
+  return typeof v === 'string' ? sum + v.length : sum
+}, 0)
+console.log(result15)
+
+// 16. Сравнить два объекта на идентичность ключей
+const obj16a = { x: 1, y: 2 };
+const obj16b = { y: 3, x: 4 };
+// Ожидаемый результат: true
+
+function result16(objA,objB){
+  const keysA = Object.keys(objA).sort()
+  const keysB = Object.keys(objB).sort()
+  return JSON.stringify(keysA) === JSON.stringify(keysB)
+}
+console.log(result16({x:1,y:2}, {y :3,x :4}))
+
+// 17. Получить ключи, где значения — массивы
+const obj17 = { a: [1, 2], b: "hello", c: [], d: 42 };
+// Ожидаемый результат: ["a", "c"]
+
+const result17 = Object.keys(obj17).filter(k => Array.isArray(obj17[k]))
+console.log(result17)
+
+// 18. Преобразовать массив ключей в объект с null значениями
+const keys18 = ["id", "name", "email"];
+// Ожидаемый результат: { id: null, name: null, email: null }
+
+const result18 = Object.fromEntries(keys18.map(key => [key, null]))
+console.log(result18)
+
+// 19. Отсортировать ключи по алфавиту и собрать объект заново
+const obj19 = { c: 3, a: 1, b: 2 };
+// Ожидаемый результат: { a: 1, b: 2, c: 3 }
+
+const result19 = Object.fromEntries(Object.entries(obj19).sort(([kA], [kB]) => kA.localeCompare(kB)))
+console.log(result19)
+
+// 20. Получить объект, где значения — длины строк из другого объекта
+const obj20 = { a: "apple", b: "banana", c: "kiwi" };
+// Ожидаемый результат: { a: 5, b: 6, c: 4 }
+
+const result202 = Object.fromEntries(Object.entries(obj20).map(([key, value]) => [key, value.length]))
+console.log(result202)
