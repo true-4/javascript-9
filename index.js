@@ -174,3 +174,159 @@ const res14 = strs14.reduce((acc, curr) => {
 }, {})
 
 console.log(res14)
+
+// 15. Получить массив длины N с шагом K от начального значения
+const start15 = 5, len15 = 4, step15 = 3;
+// const result15 = [5, 8, 11, 14];
+
+const res15 = Array.from({length: len15}, (_, index) => start15 + index * step15)
+console.log(res15)
+
+// 16. Убрать крайние N элементов массива
+const arr16 = [1, 2, 3, 4, 5, 6];
+const n16 = 2;
+// const result16 = [3, 4];
+
+const res16 = arr16.slice(n16, arr16.length - n16)
+console.log(res16)
+
+// 17. Объединить массив объектов, где ключи могут повторяться
+const objs17 = [{a: 1}, {a: 2}, {b: 3}];
+// const result17 = {a: [1, 2], b: [3]};
+
+const res17 = objs17.reduce((acc, curr) => {
+  for (const el in curr) {
+    if (acc[el]) {
+      acc[el].push(curr[el])
+    } else {
+      acc[el] = [curr[el]]
+    }
+  }
+  return acc
+}, {})
+
+console.log(res17)
+
+// 18. Преобразовать объект в массив строк формата "key=value"
+const obj18 = {a: 1, b: 2};
+// const result18 = ['a=1', 'b=2'];
+
+const res18 = Object.entries(obj18).map(([key, value]) => `${key} = ${value}`)
+console.log(res18)
+
+// 19. Удалить дубликаты из массива объектов по значению ключа
+const objs19 = [{id: 1}, {id: 2}, {id: 1}];
+// const result19 = [{id: 1}, {id: 2}];
+
+const res19 = Object.values(
+  objs19.reduce((acc, curr) => {
+    acc[curr.id] = curr
+    return acc
+  }, {})
+)
+console.log(res19)
+
+// 20. Проверить, все ли элементы массива – уникальны
+const arr20 = [1, 2, 3, 4, 1];
+// const result20 = false;
+
+const res20 = new Set(arr20).size === arr20.length
+console.log(res20)
+
+// 21. Сгруппировать строки по длине
+const strings21 = ['a', 'bb', 'ccc', 'dd'];
+// const result21 = {1: ['a'], 2: ['bb', 'dd'], 3: ['ccc']};
+
+const res21 = strings21.reduce((acc, curr) => {
+  const len = curr.length
+  if (!acc[len]) {
+    acc[len] = []
+  }
+  acc[len].push(curr)
+  return acc
+}, {})
+console.log(res21)
+
+// 22. Преобразовать массив в объект, подсчитывающий кратность значений
+const arr22 = ['yes', 'no', 'yes'];
+// const result22 = {yes: 2, no: 1};
+
+const res22 = arr22.reduce((acc, curr) => {
+  if (acc[curr]) {
+    acc[curr] += 1
+  } else {
+    acc[curr] = 1
+  }
+  return acc
+}, {})
+console.log(res22)
+
+// 23. Найти индекс самого длинного слова
+const words23 = ['hi', 'hello', 'world'];
+// const result23 = 1;
+
+const res23 = words23.reduce((maxIndex, currentWord, currentIndex, arr) => {
+  if (arr[maxIndex].length < currentWord.length) {
+    return currentIndex
+  }
+  return maxIndex
+}, 0)
+console.log(res23)
+
+// 24. Получить первые N элементов, отсортированных по длине строки
+const arr24 = ['a', 'bbbb', 'cc', 'ddd'];
+const n24 = 2;
+// const result24 = ['a', 'cc'];
+
+const sortedArr = arr24.slice().sort((a, b) => a.length - b.length)
+const res24 = sortedArr.slice(0, n24)
+console.log(res24)
+
+// 25. Удалить все числа меньше среднего
+const nums25 = [1, 2, 3, 4, 5];
+// const result25 = [3, 4, 5];
+
+const average = nums25.reduce((acc, curr) => acc + curr, 0) / nums25.length
+const res25 = nums25.filter(num => num >= average)
+console.log(res25)
+
+// 26. Найти слово, у которого все буквы уникальны
+const arr26 = ['hello', 'world', 'python'];
+// const result26 = 'world'; // 'w', 'o', 'r', 'l', 'd'
+
+const res26 = arr26.find(word => {
+  const letters = word.split('')
+  const unique = new Set(letters)
+  return letters.length === unique.size
+})
+console.log(res26)
+
+// 27. Проверить, является ли массив палиндромом
+const arr27 = [1, 2, 3, 2, 1];
+// const result27 = true;
+
+const res27 = arr27.join('') === [...arr27].reverse().join('')
+console.log(res27)
+
+// 28. Поменять местами минимальный и максимальный элементы
+const arr28 = [5, 3, 9, 1];
+// const result28 = [5, 3, 1, 9];
+
+const minIndex = arr28.indexOf(Math.min(...arr28))
+const maxIndex = arr28.indexOf(Math.max(...arr28))
+const res28 = [...arr28]
+console.log(res28)
+
+// 29. Удалить элементы, встречающиеся более одного раза
+const arr29 = [1, 2, 2, 3, 4, 4];
+// const result29 = [1, 3];
+
+const res29 = arr29.filter(item => arr29.filter(i => i === item).length === 1)
+console.log(res29)
+
+// 30. Преобразовать массив чисел в строки формата "1-й", "2-й", ...
+const nums30 = [1, 2, 3];
+// const result30 = ['1-й', '2-й', '3-й'];
+
+const res30 = nums30.map(num => `${num}-й`)
+console.log(res30)
