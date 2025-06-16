@@ -15,19 +15,18 @@ arrThis() // не имеет собственного this ссылается н
 // const nums1 = [12, 23, 45, 111];
 // const result1 = 45; // 4+5=9 – максимальная сумма
 
-// TO DOO
 const nums1 = [12, 23, 42, 45, 111];
 const res1 = nums1.map(num => ({ // проходимся по элементам массива с помощью map для того чтобы возвращать на каждой итерации объект с полями: 
   number: num, // указываем "ключ" number и присваеваем ей значение num
   digitsSum: String(num).split('').reduce((acc, curr) => acc + Number(curr), 0) // указываем "ключ" приводим его значение к строке чтобы число стало итерируемым разбиваем на отдельные числа и складываем с помощбю reduce
-})).sort(function (a, b) {
-  if (a.digitsSum > b.digitsSum) {
-    return -1
-  }
-  if (a.digitsSum < b.digitsSum) {
-    return 1
-  }
-  return 0
+})).sort(function (a, b) { return a.digitsSum > b.digitsSum ? -1 : a.digitsSum < b.digitsSum ? 1 : 0
+  // if (a.digitsSum > b.digitsSum) {
+  //   return -1
+  // }
+  // if (a.digitsSum < b.digitsSum) {
+  //   return 1
+  // }
+  // return 0
 })
 
 console.log(res1)
