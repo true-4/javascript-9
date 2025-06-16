@@ -314,8 +314,11 @@ const arr28 = [5, 3, 9, 1];
 
 const minIndex = arr28.indexOf(Math.min(...arr28))
 const maxIndex = arr28.indexOf(Math.max(...arr28))
-const res28 = [...arr28]
-console.log(res28)
+const newMin = arr28[minIndex]
+const newMax = arr28[maxIndex]
+arr28[minIndex] = newMax
+arr28[maxIndex] = newMin
+console.log(arr28)
 
 // 29. Удалить элементы, встречающиеся более одного раза
 const arr29 = [1, 2, 2, 3, 4, 4];
