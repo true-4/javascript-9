@@ -17,10 +17,18 @@ arrThis() // не имеет собственного this ссылается н
 
 // TO DOO
 const nums1 = [12, 23, 42, 45, 111]
-const res1 = nums1.map(num => ({
-  number: num,
-  digitsSum: String(num).split('').reduce((acc, curr) => acc + Number(curr), 0)
-})).reduce((acc, curr) => acc.digitsSum >= curr.digitsSum ? acc : curr).number
+const res1 = nums1.map(num => ({ // проходимся по элементам массива с помощью map для того чтобы возвращать на каждой итерации объект с полями: 
+  number: num, // указываем "ключ" number и присваеваем ей значение num
+  digitsSum: String(num).split('').reduce((acc, curr) => acc + Number(curr), 0) // указываем "ключ" приводим его значение к строке чтобы число стало итерируемым разбиваем на отдельные числа и складываем с помощбю reduce
+})).sort(function (a, b) {
+  if (a.digitsSum > b.digitsSum) {
+    return 1
+  }
+  if (a.digitsSum < b.digitsSum) {
+    return -1
+  }
+  return 0
+})
 
 console.log(res1)
 
